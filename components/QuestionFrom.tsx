@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react"
 import styles from "../styles/Home.module.css";
 import { QuestionResult } from "./From";
 import { useQuizzStorage } from "./localstorage";
-import Router from 'next/router'
+import Router from "next/router";
 
 export interface QuestionFromProps {
   id: string;
@@ -48,19 +48,23 @@ export const QuestionFrom: React.FC<QuestionFromProps> = (props) => {
     },
     [setAnswer]
   );
-    
-  const finished = formInfo.finished; 
 
-    useEffect(() => {
-      if (finished) {
-        Router.push("/finish")
-      }
-    }, [finished, Router])
+  const finished = formInfo.finished;
+  const registred = formInfo.registered;
+
+  useEffect(() => {
+    if (!registred) {
+      Router.push("/");
+    } else if (finished) {
+      Router.push("/finish");
+    }
+  }, [finished, Router]);
+
   if (currentAnswer?.submitted) {
     return (
       <>
         <p>Du har svarat alternativ {answer}.</p>
-        <p>{!formInfo.finished ? "Leta upp nästa QR fråga!" : "Rundan är slut!"}</p>        
+        <p>{!formInfo.finished ? "Leta upp nästa QR fråga!" : "Rundan är slut!"}</p>
       </>
     );
   }
@@ -88,7 +92,6 @@ export const QuestionFrom: React.FC<QuestionFromProps> = (props) => {
         </label>
       </div>
       <button type="submit">Spara</button>
-      
     </form>
   );
 };
