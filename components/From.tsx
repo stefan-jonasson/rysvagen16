@@ -1,6 +1,7 @@
 import { FormEvent, useCallback, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { useQuizzStorage } from "./localstorage";
+import { Scanner } from "./Scanner";
 
 export interface QuestionResult {
   number: number;
@@ -45,6 +46,7 @@ export const From: React.FC = () => {
         </p>
         <p>Rundan börjar vid kistlocket!</p>
         <p>Sätt igång att scanna QR-koder! </p>
+        <Scanner />
         <button type="submit">Logga ut<br/>(Nollställer alla frågor)</button>
       </form>
     );

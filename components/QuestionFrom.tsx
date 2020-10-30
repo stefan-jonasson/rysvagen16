@@ -1,8 +1,9 @@
-import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
+import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { QuestionResult } from "./From";
 import { useQuizzStorage } from "./localstorage";
 import Router from "next/router";
+import { Scanner } from "./Scanner";
 
 export interface QuestionFromProps {
   id: string;
@@ -65,6 +66,7 @@ export const QuestionFrom: React.FC<QuestionFromProps> = (props) => {
       <>
         <p>Du har svarat alternativ {answer}.</p>
         <p>{!formInfo.finished ? "Leta upp nästa QR fråga!" : "Rundan är slut!"}</p>
+        <Scanner />
       </>
     );
   }
