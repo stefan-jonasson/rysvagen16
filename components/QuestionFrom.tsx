@@ -42,7 +42,9 @@ export const QuestionFrom: React.FC<QuestionFromProps> = (props) => {
   );
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      setAnswer(event.target.value as any);
+      if (event.target.checked) {
+        setAnswer(event.target.value as any);
+      }
     },
     [setAnswer]
   );
@@ -76,7 +78,7 @@ export const QuestionFrom: React.FC<QuestionFromProps> = (props) => {
           {props.questions["1"]}
         </label>
       </div>
-      Current answer: {answer}
+
       <div className={styles.check}>
         <label>
           <input type="radio" name="answer" value="x" checked={answer === "x"} onChange={handleChange} />
@@ -90,7 +92,9 @@ export const QuestionFrom: React.FC<QuestionFromProps> = (props) => {
           {props.questions["2"]}
         </label>
       </div>
-      <button type="submit">Spara</button>
+      <button className={styles.button} type="submit">
+        Spara
+      </button>
     </form>
   );
 };
