@@ -1,5 +1,4 @@
 import { QuestionFromProps } from "./components/QuestionFrom";
-
 export const questions: QuestionFromProps[] = [
   {
     id: "e19dee35-1439-4db3-816b-7312efcecd69",

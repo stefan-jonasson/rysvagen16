@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import { From, QuizResult } from "../components/From";
+import {  QuizResult } from "../components/From";
 import Link from "next/link";
 import { useQuizzStorage } from "../components/localstorage";
 import styles from "../styles/Home.module.css";
