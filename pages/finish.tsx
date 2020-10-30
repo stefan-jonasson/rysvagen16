@@ -25,7 +25,7 @@ const SendResult = (result: QuizResult) => {
 export default function Finish() {
   const [quizz, setState] = useQuizzStorage("quiz");
   const [state, setPostState] = useState<"idle" | "posting" | "done" | "error">("idle");
-  const [errorState, setErrorState] = useState<Error | undefined>(new Error("test"));
+  const [errorState, setErrorState] = useState<Error | undefined>();
 
   useEffect(() => {
     if (quizz.finished) {

@@ -67,7 +67,6 @@ export const QuestionFrom: React.FC<QuestionFromProps> = (props) => {
   return (
     <form className={styles.signup} onSubmit={handleSubmit}>
       <p>{props.text}</p>
-      <pre>{JSON.stringify(formInfo, null, 2)}</pre>
       <div className={styles.check}>
         <label>
           <input type="radio" name="answer" value="1" checked={answer === "1"} onChange={handleChange} />

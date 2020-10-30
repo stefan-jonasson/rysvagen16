@@ -10,7 +10,7 @@ export const LinkDebug = () => {
         .filter((q) => !formInfo.results.find((r) => r.number == q.number).submitted)
         .map((q) => (
           <li>
-            <a href={`http://localhost:3000/question/${q.id}`}>{`http://localhost:3000/question/${q.id}`}</a>
+            <a href={`https://rysvagen16.vercel.app/question/${q.id}`}>{`https://rysvagen16.vercel.app/question/${q.id}`}</a>
           </li>
         ))}
     </ul>
