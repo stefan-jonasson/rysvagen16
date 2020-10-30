@@ -18,14 +18,14 @@ export const Scanner: React.FC = () => {
     [Router]
   );
   const [error, setstate] = useState("");
-  const [supported, tourch] = useTourch();
+  const [supported, enabled, tourch] = useTourch();
 
   return (
     <>
       {error && <div className={styles.error}>{error}</div>}
       {}
       <QrReader delay={500} onError={(err) => setstate(err)} onScan={handleScan} style={{ width: "100%" }} />
-      {supported && <button onClick={() => tourch(true)}>Lampa</button>}
+      {supported && <button onClick={() => tourch(!enabled)}>{enabled ? "Stäng av ":"Sätt på "}Lampa</button>}
     </>
   );
 };
