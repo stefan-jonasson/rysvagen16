@@ -9,12 +9,16 @@ const QrReader = dynamic(() => import("react-qr-reader"), {
 });
 
 export const Scanner: React.FC = () => {
-  const [error, setstate] = useState("");
+  const [error, setError] = useState("");
   const [supported, enabled, tourch] = useTourch();
   const handleScan = useCallback(
     (info: string) => {
       if (info) {
-        Router.push(info);
+        if (info === document.location.href) {
+          setError("Du är redan på denna fråga, skanna en annan kod!")
+        } else {
+          Router.push(info);
+        }
       }
     },
     [Router]
@@ -31,7 +35,7 @@ export const Scanner: React.FC = () => {
   return (
     <>
       {error && <div className={styles.error}>{error}</div>}
-      <QrReader delay={500} onError={(err) => setstate(err)} onScan={handleScan} style={{ width: "100%" }} />
+      <QrReader delay={500} onError={(err) => setError(err)} onScan={handleScan} style={{ width: "100%" }} />
       {supported && <button className={styles.button} onClick={handleTourch}>{enabled ? "Stäng av ":"Sätt på "}Lampa</button>}
     </>
   );
