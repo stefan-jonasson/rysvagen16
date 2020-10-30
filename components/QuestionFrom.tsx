@@ -25,15 +25,12 @@ export const QuestionFrom: React.FC<QuestionFromProps> = (props) => {
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       submitForm((oldQuizz) => {
-        const newAnswer: QuestionResult = { number: props.number, answer, submitted: true };
-        const results = !currentAnswer
-          ? oldQuizz.results.concat([newAnswer])
-          : oldQuizz.results.map((res) => {
-              if (res.number === props.number) {
-                return { number: props.number, answer, submitted: true };
-              }
-              return res;
-            });
+        const results = oldQuizz.results.map((res) => {
+          if (res.number === props.number) {
+            return { number: props.number, answer, submitted: true };
+          }
+          return res;
+        });
         return {
           ...oldQuizz,
           finished: results.every((ans) => ans.submitted),
@@ -41,7 +38,7 @@ export const QuestionFrom: React.FC<QuestionFromProps> = (props) => {
         };
       });
     },
-    [answer, currentAnswer]
+    [answer]
   );
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +76,7 @@ export const QuestionFrom: React.FC<QuestionFromProps> = (props) => {
           {props.questions["1"]}
         </label>
       </div>
-
+      Current answer: {answer}
       <div className={styles.check}>
         <label>
           <input type="radio" name="answer" value="x" checked={answer === "x"} onChange={handleChange} />
