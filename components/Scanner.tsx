@@ -32,7 +32,7 @@ export const Scanner: React.FC = () => {
     <>
       {error && <div className={styles.error}>{error}</div>}
       <QrReader delay={500} onError={(err) => setstate(err)} onScan={handleScan} style={{ width: "100%" }} />
-      {supported && <button onClick={handleTourch}>{enabled ? "Stäng av ":"Sätt på "}Lampa</button>}
+      {supported && <button className={styles.button} onClick={handleTourch}>{enabled ? "Stäng av ":"Sätt på "}Lampa</button>}
     </>
   );
 };

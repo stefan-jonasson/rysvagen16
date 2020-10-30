@@ -47,7 +47,7 @@ export const From: React.FC = () => {
         <p>Rundan börjar vid kistlocket!</p>
         <p>Sätt igång att scanna QR-koder! </p>
         <Scanner />
-        <button type="submit">Logga ut<br/>(Nollställer alla frågor)</button>
+        <button className={styles.button} type="submit">Logga ut<br/>(Nollställer alla frågor)</button>
       </form>
     );
   }
