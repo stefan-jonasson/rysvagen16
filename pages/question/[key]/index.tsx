@@ -36,7 +36,7 @@ export default function QuestionPage() {
         <h1 className={styles.title}>Fråga {question.number}</h1>
 
         <div className={styles.block}>
-          <QuestionFrom {...question} />
+          <QuestionFrom {...question} key={question.number} />
         </div>
         
       </main>
