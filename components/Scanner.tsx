@@ -23,7 +23,6 @@ export const Scanner: React.FC = () => {
   return (
     <>
       {error && <div className={styles.error}>{error}</div>}
-      {}
       <QrReader delay={500} onError={(err) => setstate(err)} onScan={handleScan} style={{ width: "100%" }} />
       {supported && <button onClick={() => tourch(!enabled)}>{enabled ? "Stäng av ":"Sätt på "}Lampa</button>}
     </>
